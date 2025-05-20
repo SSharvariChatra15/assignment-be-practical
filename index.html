@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Management</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>User List</h1>
+  <form method="POST" action="/add">
+    <input type="text" name="name" placeholder="Enter name" required>
+    <input type="email" name="email" placeholder="Enter email" required>
+    <button type="submit">Add User</button>
+  </form>
+  <br>
+  <table>
+    <tr><th>Name</th><th>Email</th><th>Actions</th></tr>
+    <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <a href="/edit/<%= user.id %>">Edit</a> |
+          <a href="/delete/<%= user.id %>">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
